@@ -40,9 +40,9 @@ app.use(
 			maxAge: 1000 * 60 * 60 * 24 * 7,
 			httpOnly: true,
 		},
-		store: store
+		store: store,
 	})
-)
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,7 +58,7 @@ await server.start();
 // Set up our Express middleware to handle CORS, body parsing,
 // and our expressMiddleware function.
 app.use(
-	"/",
+	"/graphql",
 	cors({
 		origin: "http://localhost:3000",
 		credentials: true,
@@ -78,4 +78,4 @@ app.use(
 await new Promise((resolve) => httpServer.listen({port: 5000}, resolve));
 await connectDB();
 
-console.log(`Server ready at http://localhost:5000/`);
+console.log(`Server ready at http://localhost:5000/graphql`);
