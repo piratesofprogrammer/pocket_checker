@@ -63,7 +63,7 @@ const Card = ({ transaction, authUser }) => {
 				</p>
 				<p className='text-white flex items-center gap-1'>
 					<FaSackDollar />
-					Amount: Rs{amount}
+					Amount: RS {amount}
 				</p>
 				<p className='text-white flex items-center gap-1'>
 					<FaLocationDot />

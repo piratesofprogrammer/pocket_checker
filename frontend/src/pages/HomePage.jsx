@@ -25,7 +25,7 @@ const HomePage = () => {
 		labels: [],
 		datasets: [
 			{
-				label: "$",
+				label: "RS",
 				data: [],
 				backgroundColor: [],
 				borderColor: [],

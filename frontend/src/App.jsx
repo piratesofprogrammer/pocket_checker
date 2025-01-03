@@ -19,7 +19,7 @@ function App() {
 	
 	return (
 		<>
-			//<h1>good morming</h1>
+		
 
 			{data?.authUser && <Header />}
 			<Routes>
