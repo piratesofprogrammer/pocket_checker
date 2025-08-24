@@ -2,7 +2,7 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
-
+import path from "path";
 import passport from "passport";
 import session from "express-session";
 import connectMongo from "connect-mongodb-session";
@@ -18,9 +18,11 @@ import mergedTypeDefs from "./typeDefs/index.js";
 import { connectDB } from "./db/connectDB.js";
 import { configurePassport } from "./passport/passport.config.js";
 
+
 dotenv.config();
 configurePassport();
 
+const __dirname = path.resolve();
 const app = express();
 const httpServer = http.createServer(app);
 const MongoDBStore = connectMongo(session);
@@ -71,7 +73,14 @@ app.use(
 	})
 );
 
+//use rander for deploy backend and frontend 
+
 // npm run build will build your frontend app, and it will the optimized version of your app
+app.use(express.static(path.join(__dirname,"frontend/dist")));
+
+app.get("*", (req,res) => {
+	res.sendFile(path.join(__dirname,"frontend/dist", "index.html"))
+})
 
 
 // Modified server startup
